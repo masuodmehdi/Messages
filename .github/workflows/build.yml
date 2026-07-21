@@ -1,18 +1,18 @@
-name: Build Android APK
+name: Build Core APK
 
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-  workflow_dispatch: # این گزینه به شما اجازه می‌دهد ساخت را به‌صورت دستی شروع کنید
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: دریافت کد (Checkout)
+    - name: دریافت کد
       uses: actions/checkout@v4
 
     - name: نصب JDK 17
@@ -25,12 +25,12 @@ jobs:
     - name: دادن مجوز اجرا به gradlew
       run: chmod +x gradlew
 
-    - name: ساخت APK دیباگ
-      run: ./gradlew assembleDebug --stacktrace
+    - name: ساخت فقط نسخه Core
+      run: ./gradlew assembleCoreDebug --stacktrace
 
-    - name: ذخیره APK ساخته شده (Artifact)
+    - name: آپلود نسخه Core
       uses: actions/upload-artifact@v4
       with:
-        name: app-debug
-        path: app/build/outputs/apk/debug/app-debug.apk
+        name: app-core-debug
+        path: app/build/outputs/apk/core/debug/app-core-debug.apk
         retention-days: 30
