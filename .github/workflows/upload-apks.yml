@@ -1,0 +1,20 @@
+- name: Upload Foss APK
+  uses: actions/upload-artifact@v4
+  with:
+    name: foss-debug
+    path: app/build/outputs/apk/foss/debug/app-foss-debug.apk
+    retention-days: 30
+
+- name: Upload Core APK
+  uses: actions/upload-artifact@v4
+  with:
+    name: core-debug
+    path: app/build/outputs/apk/core/debug/app-core-debug.apk
+    retention-days: 30
+
+- name: Upload Gplay APK
+  uses: actions/upload-artifact@v4
+  with:
+    name: gplay-debug
+    path: app/build/outputs/apk/gplay/debug/app-gplay-debug.apk
+    retention-days: 30
