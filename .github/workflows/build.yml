@@ -29,7 +29,7 @@ jobs:
       run: ./gradlew assembleGplay --stacktrace
 
     - name: آپلود نسخه Core
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: app-core-debug
         path: app/build/outputs/apk/core/debug/app-core-debug.apk
